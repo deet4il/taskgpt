@@ -1,11 +1,19 @@
 import { state } from '../state.js';
 
 import {
+
   GYMS,
   TYPE_ADVANTAGES
+
 } from '../config.js';
 
-import { saveGame } from '../storage.js';
+import {
+
+  saveGame
+
+} from '../storage.js';
+
+/* GET UNLOCKED GYM */
 
 export function getUnlockedGym() {
 
@@ -19,11 +27,16 @@ export function getUnlockedGym() {
         gym.badge
       );
 
-    return unlocked && !defeated;
+    return (
+      unlocked &&
+      !defeated
+    );
 
   });
 
 }
+
+/* CREATE BATTLE */
 
 export function createGymBattle() {
 
@@ -68,18 +81,27 @@ export function createGymBattle() {
 
 }
 
+/* BASIC ATTACK */
+
 export function basicAttack() {
 
   return {
+
     damage: 10,
+
     cost: 0
+
   };
 
 }
 
+/* ELEMENTAL ATTACK */
+
 export function elementalAttack(
+
   attackerType,
   defenderType
+
 ) {
 
   let damage = 20;
@@ -90,10 +112,13 @@ export function elementalAttack(
     ];
 
   if (
+
     strongAgainst &&
+
     strongAgainst.includes(
       defenderType
     )
+
   ) {
 
     damage *= 2;
@@ -101,32 +126,46 @@ export function elementalAttack(
   }
 
   return {
+
     damage,
+
     cost: 10
+
   };
 
 }
+
+/* BURST ATTACK */
 
 export function burstAttack() {
 
   return {
+
     damage: 50,
+
     cost: 25
+
   };
 
 }
+
+/* SPEND ENERGY */
 
 export function spendBattleEnergy(
   amount
 ) {
 
   if (
-    state.battleEnergy < amount
+    state.battleEnergy <
+    amount
   ) {
+
     return false;
+
   }
 
-  state.battleEnergy -= amount;
+  state.battleEnergy -=
+    amount;
 
   saveGame();
 
@@ -134,9 +173,13 @@ export function spendBattleEnergy(
 
 }
 
+/* SAVE GYM HP */
+
 export function saveGymHP(
+
   badge,
   enemyTeam
+
 ) {
 
   state.gymProgress.gymHP[
@@ -153,14 +196,18 @@ export function saveGymHP(
 
 }
 
+/* WIN BATTLE */
+
 export function winGymBattle(
   gym
 ) {
 
   if (
+
     !state.badges.includes(
       gym.badge
     )
+
   ) {
 
     state.badges.push(
