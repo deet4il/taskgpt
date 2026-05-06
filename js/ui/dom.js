@@ -1,5 +1,7 @@
 export const DOM = {
 
+  /* TRAINER */
+
   trainerTitle:
     document.getElementById(
       'trainerTitle'
@@ -20,6 +22,16 @@ export const DOM = {
       'xpBar'
     ),
 
+  battleEnergy:
+    document.getElementById(
+      'battleEnergy'
+    ),
+
+  masterballCount:
+    document.getElementById(
+      'masterballCount'
+    ),
+
   questCount:
     document.getElementById(
       'questCount'
@@ -35,45 +47,12 @@ export const DOM = {
       'shinyCount'
     ),
 
-  masterballCount:
-    document.getElementById(
-      'masterballCount'
-    ),
-
-  battleEnergy:
-    document.getElementById(
-      'battleEnergy'
-    ),
-
   badgeContainer:
     document.getElementById(
       'badgeContainer'
     ),
 
-  gymContainer:
-    document.getElementById(
-      'gymContainer'
-    ),
-
-  battleScreen:
-    document.getElementById(
-      'battleScreen'
-    ),
-
-  playerTeam:
-    document.getElementById(
-      'playerTeam'
-    ),
-
-  enemyTeam:
-    document.getElementById(
-      'enemyTeam'
-    ),
-
-  battleLog:
-    document.getElementById(
-      'battleLog'
-    ),
+  /* ARC */
 
   arcInput:
     document.getElementById(
@@ -95,6 +74,13 @@ export const DOM = {
       'arcSelect'
     ),
 
+  arcContainer:
+    document.getElementById(
+      'arcContainer'
+    ),
+
+  /* QUEST */
+
   questInput:
     document.getElementById(
       'questInput'
@@ -110,15 +96,12 @@ export const DOM = {
       'addMasterballBtn'
     ),
 
-  arcContainer:
-    document.getElementById(
-      'arcContainer'
-    ),
-
   archiveContainer:
     document.getElementById(
       'archiveContainer'
     ),
+
+  /* DEX */
 
   dexToggle:
     document.getElementById(
@@ -130,6 +113,8 @@ export const DOM = {
       'dexContainer'
     ),
 
+  /* GUIDE */
+
   guideToggle:
     document.getElementById(
       'guideToggle'
@@ -138,6 +123,20 @@ export const DOM = {
   guideContent:
     document.getElementById(
       'guideContent'
+    ),
+
+  /* GYM */
+
+  gymContainer:
+    document.getElementById(
+      'gymContainer'
+    ),
+
+  /* BATTLE */
+
+  battleScreen:
+    document.getElementById(
+      'battleScreen'
     )
 
 };
