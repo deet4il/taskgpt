@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    GOTTA DO 'EM ALL
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="./css/styles.css"
+  >
+
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div class="pokeball-line"></div>
+
+      <h1 class="logo">
+
+        GOTTA DO 'EM ALL
+
+      </h1>
+
+      <p
+        id="trainerTitle"
+        class="trainer-title"
+      >
+
+        Novice Trainer
+
+      </p>
+
+      <!-- STATS -->
+
+      <div class="stats-grid">
+
+        <div class="stat-box">
+
+          <span>Level</span>
+
+          <strong id="levelText">
+
+            Level 1
+
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>XP</span>
+
+          <strong id="xpText">
+
+            0 / 500 XP
+
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Battle Energy</span>
+
+          <strong id="battleEnergy">
+
+            0
+
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Masterballs</span>
+
+          <strong id="masterballCount">
+
+            0
+
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Completed</span>
+
+          <strong id="questCount">
+
+            0
+
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Pokédex</span>
+
+          <strong id="dexCount">
+
+            0 / 151
+
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Shinies</span>
+
+          <strong id="shinyCount">
+
+            0
+
+          </strong>
+
+        </div>
+
+      </div>
+
+      <!-- XP -->
+
+      <div class="xp-container">
+
+        <div
+          id="xpBar"
+          class="xp-bar"
+        ></div>
+
+      </div>
+
+      <!-- BADGES -->
+
+      <div
+        id="badgeContainer"
+        class="badge-container"
+      ></div>
+
+    </header>
+
+    <!-- CREATE -->
+
+    <section class="create-panel">
+
+      <!-- ARC -->
+
+      <div class="create-box">
+
+        <input
+          id="arcInput"
+          placeholder="Create Arc"
+        >
+
+        <label class="daily-check">
+
+          <input
+            type="checkbox"
+            id="dailyArc"
+          >
+
+          Daily Arc
+
+        </label>
+
+        <button id="addArcBtn">
+
+          Add Arc
+
+        </button>
+
+      </div>
+
+      <!-- QUEST -->
+
+      <div class="create-box">
+
+        <select id="arcSelect"></select>
+
+        <input
+          id="questInput"
+          placeholder="Create Quest"
+        >
+
+        <button id="addQuestBtn">
+
+          Add Quest
+
+        </button>
+
+        <button id="addMasterballBtn">
+
+          Masterball Quest
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- GYM -->
+
+    <section
+      id="gymContainer"
+      class="gym-container"
+    ></section>
+
+    <!-- TEAM -->
+
+    <section>
+
+      <h2 class="section-title">
+
+        Battle Team
+
+      </h2>
+
+      <div
+        id="teamContainer"
+        class="team-grid"
+      ></div>
+
+    </section>
+
+    <!-- ACTIVE ARCS -->
+
+    <section>
+
+      <h2 class="section-title">
+
+        Active Arcs
+
+      </h2>
+
+      <div id="arcContainer"></div>
+
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <section>
+
+      <h2 class="section-title">
+
+        Quest Archive
+
+      </h2>
+
+      <div
+        id="archiveContainer"
+      ></div>
+
+    </section>
+
+    <!-- POKEDEX -->
+
+    <section>
+
+      <button
+        id="dexToggle"
+        class="section-title toggle-btn"
+      >
+
+        Pokédex
+
+      </button>
+
+      <div
+        id="dexContainer"
+        class="dex-grid hidden"
+      ></div>
+
+    </section>
+
+    <!-- GUIDE -->
+
+    <section>
+
+      <button
+        id="guideToggle"
+        class="section-title toggle-btn"
+      >
+
+        App Guide
+
+      </button>
+
+      <div
+        id="guideContent"
+        class="guide hidden"
+      >
+
+        <p>
+          Complete quests to unlock Pokémon.
+        </p>
+
+        <p>
+          Every 5 completed quests grants a Masterball.
+        </p>
+
+        <p>
+          Battle gyms every 3 levels.
+        </p>
+
+        <p>
+          Daily Arcs reset every day.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- RESET -->
+
+    <section class="danger-zone">
+
+      <button id="wipeDataBtn">
+
+        Reset All Save Data
+
+      </button>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+      Created by: DC ALIGAYA
+
+    </footer>
+
+  </div>
+
+  <!-- BATTLE -->
+
+  <div
+    id="battleScreen"
+    class="battle-screen hidden"
+  ></div>
+
+  <!-- MAIN -->
+
+  <script
+    type="module"
+    src="./js/main.js"
+  ></script>
+
+</body>
+
+</html>

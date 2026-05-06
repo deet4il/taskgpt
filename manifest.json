@@ -1,0 +1,16 @@
+{
+  "name": "PokeTask",
+  "short_name": "PokeTask",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#dc2626",
+  "theme_color": "#dc2626",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/badges/boulder.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}
