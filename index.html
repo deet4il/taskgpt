@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
@@ -17,3 +21,280 @@
   >
 
 </head>
+
+<body>
+
+  <div class="app">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <h1 class="logo">
+        GOTTA DO 'EM ALL
+      </h1>
+
+      <p
+        id="trainerTitle"
+        class="trainer-title"
+      >
+        Novice Trainer
+      </p>
+
+      <!-- STATS -->
+
+      <div class="stats-grid">
+
+        <div class="stat-box">
+
+          <span>Level</span>
+
+          <strong id="levelText">
+            Level 1
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>XP</span>
+
+          <strong id="xpText">
+            0 / 500 XP
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Battle Energy</span>
+
+          <strong id="battleEnergy">
+            0
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Masterballs</span>
+
+          <strong id="masterballCount">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+      <!-- XP BAR -->
+
+      <div class="xp-container">
+
+        <div
+          id="xpBar"
+          class="xp-bar"
+        ></div>
+
+      </div>
+
+      <!-- BADGES -->
+
+      <div
+        id="badgeContainer"
+        class="badge-container"
+      ></div>
+
+    </header>
+
+    <!-- CREATE PANELS -->
+
+    <section class="create-panel">
+
+      <!-- ARC CREATION -->
+
+      <div class="create-box">
+
+        <input
+          id="arcInput"
+          placeholder="New Arc"
+        >
+
+        <label class="daily-check">
+
+          <input
+            type="checkbox"
+            id="dailyArc"
+          >
+
+          Daily Arc
+
+        </label>
+
+        <button id="addArcBtn">
+
+          Add Arc
+
+        </button>
+
+      </div>
+
+      <!-- QUEST CREATION -->
+
+      <div class="create-box">
+
+        <select id="arcSelect"></select>
+
+        <input
+          id="questInput"
+          placeholder="New Quest"
+        >
+
+        <button id="addQuestBtn">
+
+          Add Quest
+
+        </button>
+
+        <button
+          id="addMasterballBtn"
+        >
+
+          Masterball Quest
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- GYM -->
+
+    <section
+      id="gymContainer"
+      class="gym-container"
+    ></section>
+
+    <!-- ACTIVE ARCS -->
+
+    <section>
+
+      <h2 class="section-title">
+
+        Active Arcs
+
+      </h2>
+
+      <div id="arcContainer"></div>
+
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <section>
+
+      <h2 class="section-title">
+
+        Quest Archive
+
+      </h2>
+
+      <div
+        id="archiveContainer"
+      ></div>
+
+    </section>
+
+    <!-- POKEDEX -->
+
+    <section>
+
+      <button
+        id="dexToggle"
+        class="section-title toggle-btn"
+      >
+
+        Pokédex
+
+      </button>
+
+      <div
+        id="dexContainer"
+        class="dex-grid hidden"
+      ></div>
+
+    </section>
+
+    <!-- GUIDE -->
+
+    <section>
+
+      <button
+        id="guideToggle"
+        class="section-title toggle-btn"
+      >
+
+        App Guide
+
+      </button>
+
+      <div
+        id="guideContent"
+        class="guide hidden"
+      >
+
+        <p>
+          Complete quests to unlock Pokémon.
+        </p>
+
+        <p>
+          Every 5 completed quests grants a Masterball.
+        </p>
+
+        <p>
+          Masterball quests unlock Legendary Pokémon.
+        </p>
+
+        <p>
+          Daily Arcs reset every day.
+        </p>
+
+        <p>
+          Every completed quest gives XP and Battle Energy.
+        </p>
+
+        <p>
+          Every 3 levels unlocks a Gym Battle.
+        </p>
+
+        <p>
+          Gym battles are optional and progress is saved.
+        </p>
+
+        <p>
+          Collect all 151 Pokémon to begin shiny hunting.
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- BATTLE SCREEN -->
+
+  <div
+    id="battleScreen"
+    class="battle-screen hidden"
+  ></div>
+
+  <!-- MAIN SCRIPT -->
+
+  <script
+    type="module"
+    src="./js/main.js"
+  ></script>
+
+</body>
+
+</html>
