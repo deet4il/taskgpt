@@ -40,7 +40,7 @@ import {
 
 import { state } from './state.js';
 
-/* LOAD */
+/* LOAD GAME */
 
 loadGame();
 
@@ -48,13 +48,14 @@ loadGame();
 
 await runDailyReset();
 
-/* RENDER */
+/* INITIAL RENDER */
 
 render();
 
 /* ADD ARC */
 
-DOM.addArcBtn.onclick = () => {
+DOM.addArcBtn.onclick =
+() => {
 
   const name =
     DOM.arcInput.value.trim();
@@ -198,7 +199,8 @@ async () => {
 
 /* DEX TOGGLE */
 
-DOM.dexToggle.onclick = () => {
+DOM.dexToggle.onclick =
+() => {
 
   DOM.dexContainer
     .classList
@@ -208,7 +210,8 @@ DOM.dexToggle.onclick = () => {
 
 /* GUIDE TOGGLE */
 
-DOM.guideToggle.onclick = () => {
+DOM.guideToggle.onclick =
+() => {
 
   DOM.guideContent
     .classList
@@ -216,7 +219,7 @@ DOM.guideToggle.onclick = () => {
 
 };
 
-/* GYM BATTLE */
+/* GYM BUTTON */
 
 document.addEventListener(
   'click',
@@ -233,6 +236,8 @@ document.addEventListener(
 
   }
 );
+
+/* START BATTLE */
 
 function startGymBattle() {
 
@@ -284,7 +289,9 @@ function startGymBattle() {
     <div class="battle-ui">
 
       <h2 class="battle-title">
+
         VS ${battle.gym.leader}
+
       </h2>
 
       <div class="battle-field">
@@ -329,19 +336,25 @@ function startGymBattle() {
         <button
           id="basicAttack"
         >
-          Basic
+
+          Basic Attack
+
         </button>
 
         <button
           id="elementalAttack"
         >
-          Elemental
+
+          Elemental Attack
+
         </button>
 
         <button
           id="burstAttack"
         >
-          Burst
+
+          Burst Attack
+
         </button>
 
       </div>
@@ -355,6 +368,8 @@ function startGymBattle() {
     .remove('hidden');
 
   updateBattleUI();
+
+  /* UPDATE UI */
 
   function updateBattleUI() {
 
@@ -391,6 +406,8 @@ function startGymBattle() {
 
   }
 
+  /* LOG */
+
   function log(text) {
 
     document.getElementById(
@@ -401,6 +418,8 @@ function startGymBattle() {
 
   }
 
+  /* ENEMY TURN */
+
   function enemyTurn() {
 
     const player =
@@ -409,7 +428,7 @@ function startGymBattle() {
     player.hp -= 10;
 
     log(
-      'Enemy attacks!'
+      'Enemy attacked!'
     );
 
     if (player.hp <= 0) {
@@ -435,6 +454,8 @@ function startGymBattle() {
 
   }
 
+  /* ATTACK */
+
   function attack(type) {
 
     const player =
@@ -445,14 +466,18 @@ function startGymBattle() {
 
     let move;
 
-    if (type === 'basic') {
+    if (
+      type === 'basic'
+    ) {
 
       move =
         basicAttack();
 
     }
 
-    if (type === 'elemental') {
+    if (
+      type === 'elemental'
+    ) {
 
       move =
         elementalAttack(
@@ -462,7 +487,9 @@ function startGymBattle() {
 
     }
 
-    if (type === 'burst') {
+    if (
+      type === 'burst'
+    ) {
 
       move =
         burstAttack();
@@ -477,14 +504,15 @@ function startGymBattle() {
     if (!enough) {
 
       alert(
-        'Not enough BE.'
+        'Not enough Battle Energy.'
       );
 
       return;
 
     }
 
-    enemy.hp -= move.damage;
+    enemy.hp -=
+      move.damage;
 
     log(
       `${player.name} dealt ${move.damage} damage!`
@@ -520,6 +548,8 @@ function startGymBattle() {
 
   }
 
+  /* WIN */
+
   function winBattle() {
 
     log(
@@ -542,6 +572,8 @@ function startGymBattle() {
 
   }
 
+  /* LOSE */
+
   function loseBattle() {
 
     log(
@@ -562,6 +594,8 @@ function startGymBattle() {
       .add('hidden');
 
   }
+
+  /* BUTTONS */
 
   document.getElementById(
     'basicAttack'
