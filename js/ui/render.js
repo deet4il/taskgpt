@@ -4,10 +4,10 @@ import {
 
   XP_PER_LEVEL,
   TOTAL_POKEMON,
+
   GYMS,
 
-  getSilhouetteImage,
-  getBattleSprite
+  getSilhouetteImage
 
 } from '../config.js';
 
@@ -36,6 +36,8 @@ import {
 
 import { DOM } from './dom.js';
 
+/* MAIN RENDER */
+
 export function render() {
 
   renderStats();
@@ -52,6 +54,8 @@ export function render() {
 
 }
 
+/* STATS */
+
 function renderStats() {
 
   DOM.trainerTitle.textContent =
@@ -67,7 +71,9 @@ function renderStats() {
     `${(state.xp / XP_PER_LEVEL) * 100}%`;
 
   DOM.questCount.textContent =
-    state.quests.length;
+    state.quests.filter(
+      q => q.completed
+    ).length;
 
   DOM.dexCount.textContent =
     `${state.dex.length} / ${TOTAL_POKEMON}`;
@@ -83,6 +89,8 @@ function renderStats() {
   DOM.battleEnergy.textContent =
     state.battleEnergy;
 
+  /* BADGES */
+
   DOM.badgeContainer.innerHTML =
     '';
 
@@ -96,9 +104,12 @@ function renderStats() {
     if (!gym) return;
 
     const img =
-      document.createElement('img');
+      document.createElement(
+        'img'
+      );
 
-    img.src = gym.badgeSprite;
+    img.src =
+      gym.badgeSprite;
 
     img.className =
       'badge-img';
@@ -111,61 +122,12 @@ function renderStats() {
 
 }
 
-function renderGym() {
-
-  const gym =
-    getUnlockedGym();
-
-  if (!gym) {
-
-    DOM.gymContainer.innerHTML =
-      '';
-
-    return;
-
-  }
-
-  DOM.gymContainer.innerHTML = `
-
-    <div class="gym-box">
-
-      <div class="gym-top">
-
-        <img
-          src="${gym.sprite}"
-          class="gym-leader"
-        >
-
-        <div>
-
-          <h2 class="gym-title">
-            ${gym.leader}
-          </h2>
-
-          <p class="gym-sub">
-            ${gym.badge}
-          </p>
-
-        </div>
-
-      </div>
-
-      <button
-        id="startGymBattle"
-        class="gym-btn"
-      >
-        Challenge Gym
-      </button>
-
-    </div>
-
-  `;
-
-}
+/* ARC SELECT */
 
 function renderArcOptions() {
 
-  DOM.arcSelect.innerHTML = '';
+  DOM.arcSelect.innerHTML =
+    '';
 
   state.arcs.forEach(arc => {
 
@@ -174,7 +136,8 @@ function renderArcOptions() {
         'option'
       );
 
-    option.value = arc.id;
+    option.value =
+      arc.id;
 
     option.textContent =
       arc.daily
@@ -188,6 +151,8 @@ function renderArcOptions() {
   });
 
 }
+
+/* ARCS */
 
 function renderArcs() {
 
@@ -211,9 +176,7 @@ function renderArcs() {
           return false;
         }
 
-        if (
-          arc.daily
-        ) {
+        if (arc.daily) {
           return true;
         }
 
@@ -231,49 +194,63 @@ function renderArcs() {
 
     box.innerHTML = `
 
-      <div class="flex justify-between items-start mb-4">
+      <div class="quest-top">
 
-        <div class="flex items-center gap-3">
+        <div>
 
-          <button
-            class="icon-btn edit-btn"
-            data-collapse-arc="${arc.id}"
-          >
-            ${collapsed ? '▶' : '▼'}
-          </button>
+          <div class="quest-left">
 
-          <div>
+            <button
+              class="icon-btn edit-btn"
+              data-collapse-arc="${arc.id}"
+            >
 
-            <h2 class="arc-title">
-              ${arc.name}
-            </h2>
+              ${collapsed ? '▶' : '▼'}
 
-            <p class="arc-sub">
-              ${
-                arc.daily
-                  ? 'Daily Arc'
-                  : 'Standard Arc'
-              }
-            </p>
+            </button>
+
+            <div>
+
+              <div class="arc-title">
+
+                ${arc.name}
+
+              </div>
+
+              <div class="arc-sub">
+
+                ${
+                  arc.daily
+                    ? 'Daily Arc'
+                    : 'Standard Arc'
+                }
+
+              </div>
+
+            </div>
 
           </div>
 
         </div>
 
-        <div class="flex gap-2">
+        <div class="quest-actions">
 
           <button
             class="icon-btn edit-btn"
             data-edit-arc="${arc.id}"
           >
+
             Edit
+
           </button>
 
           <button
             class="icon-btn delete-btn"
             data-delete-arc="${arc.id}"
           >
+
             Delete
+
           </button>
 
         </div>
@@ -281,8 +258,12 @@ function renderArcs() {
       </div>
 
       <div
-        class="${collapsed ? 'hidden' : ''}"
         id="arc-content-${arc.id}"
+        class="${
+          collapsed
+            ? 'hidden'
+            : ''
+        }"
       ></div>
 
     `;
@@ -300,15 +281,19 @@ function renderArcs() {
         );
 
       card.className =
-        `quest-card mb-4 ${
-          quest.pokemon.shiny
-            ? 'shiny'
-            : ''
-        } ${
-          quest.completed
-            ? 'completed-quest'
-            : ''
-        }`;
+        `
+          quest-card
+          ${
+            quest.completed
+              ? 'completed-quest'
+              : ''
+          }
+          ${
+            quest.pokemon.shiny
+              ? 'shiny'
+              : ''
+          }
+        `;
 
       card.innerHTML = `
 
@@ -317,33 +302,37 @@ function renderArcs() {
           <div class="quest-left">
 
             <img
+              class="quest-img"
               src="${
                 quest.completed
                   ? quest.pokemon.image
                   : getSilhouetteImage()
               }"
-              class="quest-img"
             >
 
             <div>
 
-              <h3 class="quest-title">
-                ${quest.text}
-              </h3>
+              <div class="quest-title">
 
-              <p class="quest-sub">
+                ${quest.text}
+
+              </div>
+
+              <div class="quest-sub">
 
                 ${
                   quest.completed
-                    ? `${quest.pokemon.name}${
-                        quest.pokemon.shiny
-                          ? ' ✨'
-                          : ''
-                      }`
+                    ? quest.pokemon.name
                     : 'Unknown Pokémon'
                 }
 
-              </p>
+                ${
+                  quest.pokemon.shiny
+                    ? ' ✨'
+                    : ''
+                }
+
+              </div>
 
             </div>
 
@@ -368,14 +357,18 @@ function renderArcs() {
               class="icon-btn edit-btn"
               data-edit="${quest.id}"
             >
+
               Edit
+
             </button>
 
             <button
               class="icon-btn delete-btn"
               data-delete="${quest.id}"
             >
+
               Delete
+
             </button>
 
           </div>
@@ -397,6 +390,8 @@ function renderArcs() {
   attachEvents();
 
 }
+
+/* ARCHIVE */
 
 function renderArchive() {
 
@@ -435,11 +430,15 @@ function renderArchive() {
       );
 
     card.className =
-      `quest-card archive-card ${
-        quest.pokemon.shiny
-          ? 'shiny'
-          : ''
-      }`;
+      `
+        quest-card
+        archive-card
+        ${
+          quest.pokemon.shiny
+            ? 'shiny'
+            : ''
+        }
+      `;
 
     card.innerHTML = `
 
@@ -448,37 +447,48 @@ function renderArchive() {
         <div class="quest-left">
 
           <img
-            src="${quest.pokemon.image}"
             class="quest-img"
+            src="${quest.pokemon.image}"
           >
 
           <div>
 
-            <h3 class="quest-title">
-              ${quest.text}
-            </h3>
+            <div class="quest-title">
 
-            <p class="quest-sub">
+              ${quest.text}
+
+            </div>
+
+            <div class="quest-sub">
+
               ${quest.pokemon.name}
+
               ${
                 quest.pokemon.shiny
-                  ? '✨'
+                  ? ' ✨'
                   : ''
               }
-            </p>
 
-            <p class="archive-meta">
+            </div>
+
+            <div class="archive-meta">
+
               +${quest.xpEarned} XP
-            </p>
 
-            <p class="archive-meta">
+            </div>
+
+            <div class="archive-meta">
+
               ${quest.completedAt}
-            </p>
 
-            <p class="archive-meta">
+            </div>
+
+            <div class="archive-meta">
+
               From:
-              ${arc?.name || 'Unknown'}
-            </p>
+              ${arc?.name}
+
+            </div>
 
           </div>
 
@@ -490,14 +500,18 @@ function renderArchive() {
             class="icon-btn edit-btn"
             data-undo="${quest.id}"
           >
+
             Undo
+
           </button>
 
           <button
             class="icon-btn delete-btn"
             data-delete="${quest.id}"
           >
+
             Delete
+
           </button>
 
         </div>
@@ -513,6 +527,8 @@ function renderArchive() {
   });
 
 }
+
+/* DEX */
 
 function renderDex() {
 
@@ -536,21 +552,24 @@ function renderDex() {
       );
 
     card.className =
-      `dex-card ${
-        unlocked?.shiny
-          ? 'shiny'
-          : ''
-      }`;
+      `
+        dex-card
+        ${
+          unlocked?.shiny
+            ? 'shiny'
+            : ''
+        }
+      `;
 
     card.innerHTML = `
 
       <img
+        class="dex-img"
         src="${
           unlocked
             ? unlocked.image
             : getSilhouetteImage()
         }"
-        class="dex-img"
       >
 
       <div class="dex-name">
@@ -583,7 +602,71 @@ function renderDex() {
 
 }
 
+/* GYM */
+
+function renderGym() {
+
+  const gym =
+    getUnlockedGym();
+
+  if (!gym) {
+
+    DOM.gymContainer.innerHTML =
+      '';
+
+    return;
+
+  }
+
+  DOM.gymContainer.innerHTML = `
+
+    <div class="gym-box">
+
+      <div class="gym-top">
+
+        <img
+          class="gym-leader"
+          src="${gym.sprite}"
+        >
+
+        <div>
+
+          <div class="gym-title">
+
+            ${gym.leader}
+
+          </div>
+
+          <div class="gym-sub">
+
+            ${gym.badge}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        id="startGymBattle"
+        class="gym-btn"
+      >
+
+        Challenge Gym
+
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+/* EVENTS */
+
 function attachEvents() {
+
+  /* COMPLETE */
 
   document
     .querySelectorAll(
@@ -603,6 +686,8 @@ function attachEvents() {
 
     });
 
+  /* UNDO */
+
   document
     .querySelectorAll(
       '[data-undo]'
@@ -621,6 +706,8 @@ function attachEvents() {
 
     });
 
+  /* DELETE QUEST */
+
   document
     .querySelectorAll(
       '[data-delete]'
@@ -638,6 +725,8 @@ function attachEvents() {
       };
 
     });
+
+  /* EDIT QUEST */
 
   document
     .querySelectorAll(
@@ -665,6 +754,8 @@ function attachEvents() {
 
     });
 
+  /* DELETE ARC */
+
   document
     .querySelectorAll(
       '[data-delete-arc]'
@@ -682,6 +773,8 @@ function attachEvents() {
       };
 
     });
+
+  /* EDIT ARC */
 
   document
     .querySelectorAll(
@@ -708,6 +801,8 @@ function attachEvents() {
       };
 
     });
+
+  /* COLLAPSE ARC */
 
   document
     .querySelectorAll(
