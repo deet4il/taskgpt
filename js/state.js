@@ -1,24 +1,34 @@
 export const state = {
 
+  /* PLAYER */
+
   xp: 0,
 
   level: 1,
 
+  battleEnergy: 0,
+
   masterballs: 0,
 
-  battleEnergy: 0,
+  badges: [],
+
+  /* COLLECTION */
+
+  dex: [],
+
+  /* TASKS */
 
   arcs: [],
 
   quests: [],
 
-  dex: [],
+  collapsedArcs: [],
 
-  badges: [],
+  /* DAILY RESET */
 
   lastDailyReset: null,
 
-  collapsedArcs: [],
+  /* GYM SYSTEM */
 
   gymProgress: {
 
