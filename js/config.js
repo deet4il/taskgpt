@@ -1,191 +1,197 @@
+/* XP */
+
 export const XP_PER_LEVEL = 500;
 
-export const NORMAL_XP = 50;
-
-export const MASTERBALL_XP = 150;
-
-export const NORMAL_BE = 5;
-
-export const MASTERBALL_BE = 15;
-
-export const SHINY_RATE = 10;
+/* TOTAL */
 
 export const TOTAL_POKEMON = 151;
 
+/* MASTERBALL */
+
+export const MASTERBALL_EVERY = 5;
+
+/* QUEST REWARDS */
+
+export const QUEST_XP = 50;
+
+export const MASTERBALL_XP = 150;
+
+export const QUEST_BE = 10;
+
+export const MASTERBALL_BE = 30;
+
+/* TRAINER TITLES */
+
+export const TRAINER_TITLES = [
+
+  'Novice Trainer',
+  'Beginner Trainer',
+  'Pokémon Catcher',
+  'Rookie Battler',
+  'Skilled Trainer',
+  'Ace Trainer',
+  'Elite Trainer',
+  'Veteran Trainer',
+  'Gym Challenger',
+  'Pokémon Master'
+
+];
+
+/* TYPE ADVANTAGES */
+
+export const TYPE_ADVANTAGES = {
+
+  fire: ['grass', 'bug'],
+  water: ['fire', 'rock'],
+  grass: ['water', 'rock'],
+  electric: ['water'],
+  psychic: ['fighting'],
+  fighting: ['rock', 'normal'],
+  ground: ['electric', 'fire'],
+  rock: ['fire', 'bug']
+
+};
+
+/* LEGENDARIES */
+
 export const LEGENDARIES = [
+
   144,
   145,
   146,
   150,
   151
-];
-
-export const TRAINER_TITLES = [
-
-  'Novice Trainer',
-
-  'Beginner Trainer',
-
-  'Rookie Trainer',
-
-  'Pokémon Catcher',
-
-  'Battle Trainer',
-
-  'Ace Trainer',
-
-  'Veteran Trainer',
-
-  'Elite Trainer',
-
-  'Gym Challenger',
-
-  'Gym Conqueror',
-
-  'Regional Champion',
-
-  'Master Trainer',
-
-  'Legendary Trainer'
 
 ];
+
+/* GYM LEADERS */
 
 export const GYMS = [
 
   {
     level: 3,
+
     leader: 'Brock',
+
     badge: 'Boulder Badge',
-    type: 'rock',
+
     sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/trainers/1.png',
+      'https://archives.bulbagarden.net/media/upload/8/88/Spr_RG_Brock.png',
+
     badgeSprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/boulder-badge.png',
+      'https://archives.bulbagarden.net/media/upload/7/7d/Boulder_Badge.png',
+
     team: [
+
       {
         id: 74,
-        name: 'GEODUDE',
+        name: 'Geodude',
         type: 'rock'
       },
+
       {
         id: 95,
-        name: 'ONIX',
+        name: 'Onix',
         type: 'rock'
       },
+
       {
         id: 111,
-        name: 'RHYHORN',
+        name: 'Rhyhorn',
         type: 'ground'
       }
+
     ]
+
   },
 
   {
     level: 6,
+
     leader: 'Misty',
+
     badge: 'Cascade Badge',
-    type: 'water',
+
     sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/trainers/2.png',
+      'https://archives.bulbagarden.net/media/upload/6/6f/Spr_RG_Misty.png',
+
     badgeSprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cascade-badge.png',
+      'https://archives.bulbagarden.net/media/upload/9/9c/Cascade_Badge.png',
+
     team: [
+
       {
         id: 120,
-        name: 'STARYU',
+        name: 'Staryu',
         type: 'water'
       },
+
       {
         id: 121,
-        name: 'STARMIE',
-        type: 'psychic'
+        name: 'Starmie',
+        type: 'water'
       },
+
       {
         id: 54,
-        name: 'PSYDUCK',
+        name: 'Psyduck',
         type: 'water'
       }
-    ]
-  },
 
-  {
-    level: 9,
-    leader: 'Lt. Surge',
-    badge: 'Thunder Badge',
-    type: 'electric',
-    sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/trainers/3.png',
-    badgeSprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/thunder-badge.png',
-    team: [
-      {
-        id: 25,
-        name: 'PIKACHU',
-        type: 'electric'
-      },
-      {
-        id: 100,
-        name: 'VOLTORB',
-        type: 'electric'
-      },
-      {
-        id: 26,
-        name: 'RAICHU',
-        type: 'electric'
-      }
     ]
+
   }
 
 ];
 
-export const TYPE_ADVANTAGES = {
-
-  fire: ['grass', 'bug', 'ice'],
-
-  water: ['fire', 'rock', 'ground'],
-
-  grass: ['water', 'rock', 'ground'],
-
-  electric: ['water', 'flying'],
-
-  rock: ['fire', 'ice', 'flying'],
-
-  ground: ['electric', 'fire', 'rock'],
-
-  psychic: ['fighting', 'poison'],
-
-  ice: ['grass', 'ground', 'flying'],
-
-  bug: ['grass', 'psychic'],
-
-  poison: ['grass']
-
-};
+/* POKEMON IMAGE */
 
 export function getPokemonImage(
   id,
   shiny = false
 ) {
 
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-    shiny ? 'shiny/' : ''
-  }${id}.png`;
+  if (shiny) {
+
+    return `
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${id}.png
+`;
+
+  }
+
+  return `
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png
+`;
 
 }
+
+/* BATTLE SPRITE */
 
 export function getBattleSprite(
   id,
   shiny = false
 ) {
 
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-    shiny ? 'shiny/' : ''
-  }${id}.png`;
+  if (shiny) {
+
+    return `
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png
+`;
+
+  }
+
+  return `
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png
+`;
 
 }
 
+/* SILHOUETTE */
+
 export function getSilhouetteImage() {
 
-  return 'https://upload.wikimedia.org/wikipedia/commons/5/55/Question_Mark.svg';
+  return `
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png
+`;
 
 }
