@@ -1,0 +1,231 @@
+<body>
+
+  <div class="app">
+
+    <header class="topbar">
+
+      <h1 class="logo">
+        GOTTA DO 'EM ALL
+      </h1>
+
+      <p
+        id="trainerTitle"
+        class="trainer-title"
+      >
+        Novice Trainer
+      </p>
+
+      <div class="stats-grid">
+
+        <div class="stat-box">
+
+          <span>Level</span>
+
+          <strong id="levelText">
+            Level 1
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>XP</span>
+
+          <strong id="xpText">
+            0 / 500 XP
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>BE</span>
+
+          <strong id="battleEnergy">
+            0
+          </strong>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span>Masterballs</span>
+
+          <strong id="masterballCount">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+      <div class="xp-container">
+
+        <div
+          id="xpBar"
+          class="xp-bar"
+        ></div>
+
+      </div>
+
+      <div
+        id="badgeContainer"
+        class="badge-container"
+      ></div>
+
+    </header>
+
+    <section class="create-panel">
+
+      <div class="create-box">
+
+        <input
+          id="arcInput"
+          placeholder="New Arc"
+        >
+
+        <label class="daily-check">
+
+          <input
+            type="checkbox"
+            id="dailyArc"
+          >
+
+          Daily Arc
+
+        </label>
+
+        <button id="addArcBtn">
+
+          Add Arc
+
+        </button>
+
+      </div>
+
+      <div class="create-box">
+
+        <select id="arcSelect"></select>
+
+        <input
+          id="questInput"
+          placeholder="New Quest"
+        >
+
+        <button id="addQuestBtn">
+
+          Add Quest
+
+        </button>
+
+        <button
+          id="addMasterballBtn"
+        >
+
+          Masterball Quest
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <section
+      id="gymContainer"
+      class="gym-container"
+    ></section>
+
+    <section>
+
+      <h2 class="section-title">
+
+        Active Arcs
+
+      </h2>
+
+      <div id="arcContainer"></div>
+
+    </section>
+
+    <section>
+
+      <h2 class="section-title">
+
+        Quest Archive
+
+      </h2>
+
+      <div
+        id="archiveContainer"
+      ></div>
+
+    </section>
+
+    <section>
+
+      <button
+        id="dexToggle"
+        class="section-title toggle-btn"
+      >
+
+        Pokédex
+
+      </button>
+
+      <div
+        id="dexContainer"
+        class="dex-grid hidden"
+      ></div>
+
+    </section>
+
+    <section>
+
+      <button
+        id="guideToggle"
+        class="section-title toggle-btn"
+      >
+
+        App Guide
+
+      </button>
+
+      <div
+        id="guideContent"
+        class="guide hidden"
+      >
+
+        <p>
+          Complete quests to unlock Pokémon.
+        </p>
+
+        <p>
+          Every 5 completed quests
+          grants a Masterball.
+        </p>
+
+        <p>
+          Battle gyms every 3 levels.
+        </p>
+
+        <p>
+          Daily Arcs reset every day.
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <div
+    id="battleScreen"
+    class="battle-screen hidden"
+  ></div>
+
+  <script
+    type="module"
+    src="./js/main.js"
+  ></script>
+
+</body>
